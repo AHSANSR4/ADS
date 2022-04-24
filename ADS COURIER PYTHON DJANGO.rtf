@@ -354,7 +354,8 @@ The main logical part comes so we will first break it into parts first part is w
 \pard\pardeftab720\sl360\partightenfactor0
 
 \f2\fs24 \cf6 \cb3 TrackingIDUsername\cf4  = \cf6 request\cf4 .user.get_username()\cf9 #here i'm getting username of the logged in user\cf4 \cb1 \
-\cb3             \cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 \cb3             \cb1 \
 \cb3             \cf6 TrackingIDlastID\cf4  = \cf5 manualbooking\cf4 .\cf6 objects\cf4 .\cf7 order_by\cf4 (\cf8 'TrackingID'\cf4 ).\cf7 last\cf4 ()\cb1 \
 \cb3             \cf9 #above i'm getting the last tracking id so that i can increment it and pass it to the model\cf4 \cb1 \
 \cb3             \cf6 TrackingIDlastID\cf4 =\cf5 str\cf4 (\cf6 TrackingIDlastID\cf4 .id+\cf16 1\cf4 )\cf9 #here i converted it into string and incremented it with one(+1)\cf4 \cb1 \
@@ -381,6 +382,20 @@ Remember just for now I\'92m getting username of the logged in user we don\'92t 
 \cf14 Now there will be special search field for the rider to update/Track the order by just putting the last digits after the 00\
 How I\'92m gonna do this is as I generating the TrackingId by passing the username+ The ID field number of manual booking Model and incrementing +1\
 SO if the tracking number is Like: \'93APPAREALS00124\'94 \'93124\'94 is the id field in the table so we can simply use it and get call the objects of the model using this id\
+\
+\
+\
+\
+\
+
+\fs60 UPLOADING ADS TO HEROKU \
+
+\fs26 $ heroku login\
+$ heroku git:remote -a adscourier \
+
+\fs60 \
+
+\fs24 \
 \
 \
 \
