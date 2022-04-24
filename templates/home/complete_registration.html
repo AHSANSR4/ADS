@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Complete Registration-->
+<section id="register" class="bg-light py-5">
+    <div class="container">
+        <div class="alert alert-success text-center" role="alert">
+          <!---ALERTS ANY ALERT MESSAGES TO OUTPUT-->
+          {% include 'partials/_alerts.html' %}
+          
+            Please Fill the remaining Details to become verified shipper
+          </div>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header text-white text-center" style="background-color: #FFA500;">
+              <h4>
+                <i class="fas fa-user-plus"></i> Left Registration</h4>
+                <div class="progress">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                  <label for="businessname">Business Name</label>
+                  <input type="text" name="businessname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="business_address">Business Address</label>
+                  <input type="text" name="businessaddress" class="form-control" required>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="disabledTextInput"  class="form-label">Country</label>
+                    <input type="text" id="myText" name="country" class="form-control" value="Pakistan">
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <select name="city" class="form-control">
+                   
+                    <option value="KHI">KARACHI</option>
+                    <option value="HYD">HYDERABAD</option>
+                    <option value="NWB">NAWABSHAH</option>
+                    <option value="SKR">SUKKUR</option>
+                    <option value="MPK">MIRPURKHASs</option>
+                    <option value="TTA">THATTA</option>
+                    <option value="ISB">ISLAMABAD</option>
+                    <option value="LHR">LAHORE</option>
+                    <option value="RWP">RAWALPINDI</option>
+                    <option value="FSL">FAISLABAD</option>
+                    <option value="GJR">GUJRANWALA</option>
+                    <option value="MTN">MULTAN</option>
+                    <option value="BWP">BAHAWALPUR</option>
+                    <option value="SRG">SARGODHA</option>
+                    <option value="SKT">SIALKOT</option>
+                    <option value="QTA">QUETTA</option>
+                    <option value="PSWR">PESHAWAR</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Area Postal Code</label>
+                  <input type="tel" name="postalcode" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="NATURE OF BUSINESS">Nature Of Business<small class="text-muted"> (what you sell?)</small></label>
+                  <select name="nob" class="form-control">
+                    <option value="CLOTHING">CLOTHING</option>
+                    <option value="HOME DECOR">HOME DECOR</option>
+                    <option value="HOME APPLIANCES">HOME APPLIANCES</option>
+                    <option value="WATCHES">WATCHES</option>
+                    <option value="JEWELLERY">JEWELLERY</option>
+                    <option value="WALLETS">WALLTES</option>
+                    <option value="PURSES">PURSES</option>
+                    <option value="COSMETICS">COSMETICS</option>
+                    <option value="PERFUMES">PERFUMES</option>
+                    <option value="SPORTS">SPORTS</option>
+                    <option value="HEALTH&FITNESS">HEALTH&FITNESS</option>
+                    <option value="BOOKS">BOOKS</option>
+                    <option value="MOBILE PHONES & ACCESSORIES">MOBILE PHONES & ACCESSORIES</option>
+                    <option value="COMPUTER & ACCESSORIES">COMPUTER & ACCESSORIES</option>
+                    <option value="FOOTWEAR">FOOTWEAR</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="disabledTextInput" class="form-label">Number of shipments per month?<small class="text-muted"> (average)</small></label>
+                  <input type="text" id="myText" name="nospm" class="form-control" value="">
+              </div>
+                <div class="form-group">
+                  <label for="">Selling Platform <small> where do you sell?</small></label>
+                  <select name="sellingplatform" class="form-control">
+                    <option value="website">WEBSITE</option>
+                    <option value="shopify">SHOPIFY</option>
+                    <option value="FB&INSTA">FACEBOOK & INSTAGRAM</option>
+                    <option value="WHATSAPP">WHATSAPP</option>
+                    <option value="AOTA">ALL OF THE ABOVE</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label >Link of your Selling platform <small class="fa fa-link">  (optional)</small></label>
+                  <input type="text" name="loysp" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="cnic">CNIC / NTN Number</label>
+                  <input type="tel" name="cnic" class="form-control" required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-block" style="background-color: #FFA500;">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Complete Registration ENds-->
+  
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% block title %}  | DASHBOARD {% endblock %}
+{% block content %}
+<style>
+    section {
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+        background-color: #f1f4fa;
+    }
+    .wrap {
+        display: flex;
+        background: white;
+        padding: 1rem 1rem 1rem 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .wrap:hover {
+        background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+        color: white;
+    }
+    
+    .ico-wrap {
+        margin: auto;
+    }
+    
+    .mbr-iconfont {
+        font-size: 4.5rem !important;
+        color: #313131;
+        margin: 1rem;
+        padding-right: 1rem;
+    }
+    .vcenter {
+        margin: auto;
+    }
+    
+    .mbr-section-title3 {
+        text-align: left;
+    }
+    h2 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .display-5 {
+        font-family: 'Source Sans Pro',sans-serif;
+        font-size: 1.4rem;
+    }
+    .mbr-bold {
+        font-weight: 700;
+    }
+    
+     p {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 25px;
+    }
+    .display-6 {
+        font-family: 'Source Sans Pro',sans-serif;
+        font-size: 1re}
+</style>
+ <section class="bg-light py-5">
+      <!---ALERTS ANY ALERT MESSAGES TO OUTPUT-->
+    {% include 'partials/_alerts.html' %}
+    </section>
+
+    
+        <section  class="bg-light">
+        <div class="container">
+        <div class="row mbr-justify-content-center">
+        <div class="col-md-4">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-upload fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{TTB}}</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Today's Total Bookings</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-calendar fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{MTBCOUNT}}</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Total Monthly Bookings</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-road fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{P}} </h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">On it's way</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-trophy fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">{{D}}</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Delivered</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-reply fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                    <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">0</h2>
+                    <p class="mbr-fonts-style text1 mbr-text display-6">Return's</p>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        </section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            {% if MTB %}
+            
+            <table class="table table-bordered">
+                <h4>Your Bookings</h4>
+                <thead>
+                  <tr>
+                    <th scope="col"># ID</th>
+                    <th scope="col">CONSIGNEE </th>
+                    <th scope="col">TRACKING NO.</th>
+                    <th scope="col">EMAIl</th>
+                    <th scope="col">PHONE <small class="fa fa-phone"></small></th>
+                    <th scope="col">WEIGHT</th>
+                    <th scope="col">BOOKED SINCE</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">PRINT <small>Address label</small></th>
+                    <th scope="col">Generate <small>Load sheet</small></th>
+                  </tr>
+                </thead>
+                {% for AB in MTB %}
+                <tbody>
+                  <tr>
+                    <th scope="row"><a href="{% url 'bookingreceipt' AB.id %}">{{ AB.id }}</a></th>
+                    <td>{{AB.ConsigneeName}}</td>
+                    <td>{{AB.TrackingID	}}</td>
+                    <td>{{AB.ConsigneeEmail}}</td>
+                    <td>{{AB.ConsigneeMobileNumber}}</td>
+                    <td>{{AB.Weight}}<small class="muted"> kg</small></td>
+                    <td>{{AB.BookingDate_date | timesince}}</td>
+                    {% if AB.Delivered_Status == True %}
+                        <td class="text-success"><i class="fa fa-sm	 fa-check" aria-hidden="true">DELIVERED</i></td>
+                    {% elif AB.Picked_Status == True %}
+                        <td class="text-warning" >PICKED</td>
+                    {% else %}    
+                        <td><small class="text-muted">NOT PICKED </small></td>
+                    {% endif %}
+                    <td><a href="{% url 'printlabel' AB.id %}">print <span class="fa fa-print"></span></a></td>
+                   <!--<td><a href="{% url 'bookingreceipt' AB.id %}">print <span class="fa fa-print"></span></a></td>--> 
+                   <td><a href="{% url 'loadsheet' %}" class="text-success">Generate</a></td>
+                  </tr>
+                  </tbody>
+                  {% endfor %}
+              </table>
+             
+              {% else %}
+              <div class="col-md-12">
+                <div class="jumbotron">
+                  <h1 class="display-3 text-center">YOU DON'T HAVE ANY RECENT BOOKINGS, SORRY </h1>
+                </div>
+              </div>
+              {% endif %}
+        </div>
+    </div>
+</section>     
+
+
+
+
+{% endblock %}

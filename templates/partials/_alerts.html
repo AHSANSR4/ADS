@@ -1,0 +1,23 @@
+{% if messages %}
+<!--first we will check if there is any message or messages because if there is none so we dont want to sow the markup -->
+    {% for message in messages %} 
+    <!--#looping the messages if there are any -->
+    <!-- SO HERE WE WILL AD OUR MARKUP -->
+        <div id="message" class="container">
+            <div class="alert alert-{{message.tags}} alert-dismissible text-center" role="alert">
+                <!-- so now remember in the settings we said .ERROR:'danger so that why we replaced the alert-tag'-->
+                <button class="close" type="button" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        ERROR:
+                    {% else %}
+                        {{ message.tags|title }}
+                    {% endif %}
+                </strong>
+                {{message}}
+             </div>
+        </div>
+    {% endfor %}
+{% endif %}

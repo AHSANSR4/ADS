@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+<!---START OF -->
+<section id="register" class="bg-light py-5 pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="card">
+            <div class="card-header text-white" style="background-color: #FFA500;">
+              <h4>
+                <i class="fas fa-paper-plane"></i> MANUAL PRE BOOKING</h4>
+            </div>
+            <div class="card-body">
+              <!---ALERTS ANY ALERT MESSAGES TO OUTPUT-->
+              {% include 'partials/_alerts.html' %}
+                <form action="{% url 'BOOKINGS' %}" method="POST">
+                  <div class="row mx-auto">
+                    {% csrf_token %}
+                    <div class="form-group col-md-6">
+                      <label for="name">Consignor Name</label>
+                    {% if user.is_authenticated %}
+                        <input type="text" name="consignorname" value="{{user.profile.businessname}}" class="form-control" required readonly>
+                    {% else %}
+                      <input type="text" name="consignorname" value="PLEASE LOGIN" class="form-control" required readonly>
+                    {% endif %}
+                      <input type="hidden" name="userid" value="{{user.id}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Consignor Address</label>
+                      <input type="text" name="consignoraddress" class="form-control" value="{{user.profile.businessaddress}}" required readonly>
+                    </div>
+                  <div class="form-group col-md-6">
+                  <label for="name">Consignee Name</label>
+                  <input type="text" name="consigneename" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mobilenumber">Consignee Mobile Number</label>
+                  <input type="tel" name="consigneemobilenumber" minlength="11" maxlength="13" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email">Consignee Email</label>
+                  <input type="email" name="consigneeemail" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="address">Consignee Address</label>
+                  <input type="text" name="Consigneeaddress" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="codamount">COD Amount</label>
+                  <input type="tel" name="codamount" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="productdetail">Product Detail</label>
+                  <input type="text" name="productdetail" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="disabledTextInput" class="form-label">ORIGIN CITY</label>
+                  <input type="text" id="myText" name="origincity" class="form-control" value="Karachi">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="city">Destination City</label>
+                <select name="destinationcity" class="form-control">
+                  <option value="KHI">KARACHI</option>
+                  <option value="HYD">HYDERABAD</option>
+                  <option value="NWB">NAWABSHAH</option>
+                  <option value="SKR">SUKKUR</option>
+                  <option value="MPK">MIRPURKHASs</option>
+                  <option value="TTA">THATTA</option>
+                  <option value="ISB">ISLAMABAD</option>
+                  <option value="LHR">LAHORE</option>
+                  <option value="RWP">RAWALPINDI</option>
+                  <option value="FSL">FAISLABAD</option>
+                  <option value="GJR">GUJRANWALA</option>
+                  <option value="MTN">MULTAN</option>
+                  <option value="BWP">BAHAWALPUR</option>
+                  <option value="SRG">SARGODHA</option>
+                  <option value="SKT">SIALKOT</option>
+                  <option value="QTA">QUETTA</option>
+                  <option value="PSWR">PESHAWAR</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="email">Weight <small class="badge text-wrap" style="width: 6rem; background-color: #FFA500;" >in Kilograms</small> </label>
+                <input type="tel" name="weight" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="password2">Pieces<span class="text-danger">*</span></label>
+                <input type="tel" name="pieces" value="1" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="city">Service Type <span class="text-warning">?</span></label>
+                <select name="servicetype" class="form-control">
+                  <option value="Secondday">SecondDay</option>
+                  <option value="Overnight">Overnight</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="city">Special Handling <span class="text-success">?</span></label>
+                <select name="specialhandling" class="form-control">
+                  
+                  <option value="NO">NO</option>
+                  <option value="YEs">YES</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="text">Order id </label>
+                <input type="text" name="Order_id" class="form-control" >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="remarks">Remarks</label>
+                <input type="text" name="remarks" class="form-control" >
+              </div>
+              </div>
+                <input type="submit" value="Register" class="btn btn-block" style="background-color: #FFA500;">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--- END OF --->
+{% endblock %}

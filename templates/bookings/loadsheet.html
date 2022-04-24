@@ -1,0 +1,372 @@
+{% extends 'base.html' %}
+{% block title %}  | LOADSHEET {% endblock %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+        
+        background:#eee;    
+    }
+</style>
+<section class="pt-5 py-5">
+    <div class="container bootdey">
+        <div class="row invoice row-printable">
+            <div class="col-md-10">
+                <!-- col-lg-12 start here -->
+                <div class="panel panel-default plain" id="dash_0">
+                    <!-- Start .panel -->
+                    <div class="panel-body p30">
+                        <div class="row">
+                            <!-- Start .row -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-logo"><img height="200px" width="200px" src="{% static 'LOGO/ADSlogo.png' %}" alt="Invoice logo"></div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-from">
+                                    <ul class="list-unstyled text-right">
+                                        <li class="font-weight-bold">ADS COURIERS</li>
+                                        <li class="font-weight-bold">CUSTOMER PORTAL</li>
+                                        <li class="font-weight-bold">LOADSHEET</li>
+                                        <li>+92 3162781010</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-12">
+                                <!-- col-lg-12 start here -->
+                                <div class="invoice-details mt25">
+                                    <div class="well">
+                                        <ul class="list-unstyled mb0">
+                                            <li><strong>Customer Name</strong> AHSAN</li>
+                                            <li><strong>Customer Business Name:</strong> APPAREALS</li>
+                                            <li><strong>Due Date:</strong> Thursday, December 1th, 2015</li>
+                                            <li><strong>Status:</strong> <span class="label label-danger">PICKED</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="invoice-to mt25">
+                                    <ul class="list-unstyled">
+                                        <li><strong>Disclaimer</strong></li>
+                                        <li><small>SERVICES is to ensure that the items being handed over to ADS Courier Logistic's pick-up staff are pasted with right address label</small></li>
+                                        <li><small> BUSINESS NAME will be responsible for the content packed inside the shipment.</small></li>
+                                        <li><small>BUSINESS NAME will ensure the availability with the required COD amount for hassle free delivery.</small></li>
+                                        <li><small>Booked weight may vary with invoice / billing weight as our manifested weight will be treated as final weight.</small></li>
+                                    </ul>
+                                </div>
+                                <div class="invoice-items">
+                                    <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="per5 text-center">Sr.</th>
+                                                    <th class="per70 text-center">TrackingID</th>
+                                                    <th class="per70 text-center">Ref#</th>
+                                                    <th class="per5 text-center">Destination</th>
+                                                    <th class="per5 text-center">Weight</th>
+                                                    <th class="per5 text-center">Pieces</th>
+                                                    <th class="per25 text-center">COD Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">090000</td>
+                                                    <td class="text-center">1777</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">1<small> (kg)</small></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">2500 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">090000</td>
+                                                    <td class="text-center">1777</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">1<small> (kg)</small></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">2500 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">090000</td>
+                                                    <td class="text-center">1777</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">1<small> (kg)</small></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">2500 </td>
+                                                </tr>
+                
+                                            </tbody>
+                                            <tfoot>
+                                               
+                                                <tr>
+                                                    
+                                                    <th>Total parcels</th>
+                                                    <th>10</th>
+                                                    <th>Total Parcels by Rider  Count : </th>
+                                                    <th class="text-center"><small class="text-muted">mention here</small></th>
+                                                    <th colspan="2" class="text-right">Total:</th>
+                                                    <th class="text-center">284440 PKR</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="invoice-footer mt25">
+                                    <p class="text-center">Generated on Monday, October 08th, 2015 <a href="#" class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a></p>
+                                </div>
+                                <div class="invoice-footer mt25">
+                                    <p class="text-center"><small class="text-muted"> By signing here you confirm that above mentioned Goods / Shipments has been Received / HandedOver</small></a></p>
+                                    <p class="text-center">Signature: <i class="fa fa-pen mr2"></i><small class="text-muted"> Sign here</small></a></p>
+                                </div>
+                            </div>
+                            <!-- col-lg-12 end here -->
+                        </div>
+                        <!-- End .row -->
+                    </div>
+                </div>
+                <!-- End .panel -->
+            </div>
+            <!-- col-lg-12 end here -->
+        </div>
+        </div>
+</section>
+
+
+
+<!---
+<form method="post" action="" id="form1">
+    <div class="aspNetHidden">
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+    </div>
+    
+    <div class="aspNetHidden">
+    
+        <input type="hidden" name="" id="" value="801FBAC4">
+    </div>
+            <div id="page-wrap">
+                <table class="style1">
+                    <tbody><tr>
+                        <td colspan="2" style="text-align: left;" class="style22">
+                            <h5>
+                                <span id="lbl_Print_Date"></span></h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <h5>M&amp;P Customer Portal</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <h3>GOODS LOAD SHEET</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <b>Customer Name:</b>
+                        </td>
+                        <td>
+                            <span id="lbl_customerName">ADS SERVICES </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <b>M&amp;P Express Account #:</b>
+                        </td>
+                        <td>
+                            <span id="lbl_OCS_Account_No">4A1029</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <b>Booking Date:</b>
+                        </td>
+                        <td>
+                            <span id="lbl_Booking_Date">11/2/2021 9:05:04 AM</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <b>Report Run Time:</b>
+                        </td>
+                        <td>
+                            <span id="lbl_Report_Time">12/1/2021 3:54:14 PM</span>
+                            <br>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <br>
+                <b>Following Goods / Shipments have been received.</b>
+                <table border="1px" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <th class="style4">Sr. #
+                        </th>
+                        <th class="style3">Flyer
+                        </th>
+                        <th class="style5">Consignment #
+                        </th>
+                        <th class="style6">Cust. Ref. #
+                        </th>
+                        <th class="style7">Destination
+                        </th>
+                        <th class="style8">Weight
+                        </th>
+                        <th class="style9">Pieces
+                        </th>
+                        <th class="style10">COD Amount
+                        </th>
+                    </tr>
+                    
+                            <tr>
+                                <td class="style4">
+                                    1
+                                </td>
+                                <td class="style3">
+                                    
+                                </td>
+                                <td class="style5">
+                                    547122610002806
+                                </td>
+                                <td class="style6" style="text-align: right;">
+                                    111111
+                                </td>
+                                <td class="style7">
+                                    KARACHI
+                                </td>
+                                <td class="style8" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style9" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style10" style="text-align: right;">
+                                    1800
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="style4">
+                                    2
+                                </td>
+                                <td class="style3">
+                                    
+                                </td>
+                                <td class="style5">
+                                    547122610002807
+                                </td>
+                                <td class="style6" style="text-align: right;">
+                                    orderO2
+                                </td>
+                                <td class="style7">
+                                    KARACHI
+                                </td>
+                                <td class="style8" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style9" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style10" style="text-align: right;">
+                                    5000
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="style4">
+                                    3
+                                </td>
+                                <td class="style3">
+                                    
+                                </td>
+                                <td class="style5">
+                                    547122610002808
+                                </td>
+                                <td class="style6" style="text-align: right;">
+                                    ABC
+                                </td>
+                                <td class="style7">
+                                    KARACHI
+                                </td>
+                                <td class="style8" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style9" style="text-align: right;">
+                                    1
+                                </td>
+                                <td class="style10" style="text-align: right;">
+                                    900
+                                </td>
+                            </tr>
+                        
+                    <tr>
+                        <td colspan="7" style="text-align: right;">
+                            <b>Total:</b>
+                        </td>
+                        <td style="text-align: right;">
+                            <span id="lbl_Total_Amount">7700</span>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div>
+                    <h4 style="text-decoration: underline">Disclaimer
+                    </h4>
+                    <p>
+                        <span id="lbl_cus1" class="label">ADS SERVICES </span>
+                        is to ensure that the items being handed over to M&amp;P Express Logistic's pick-up staff are pasted with
+                right address label
+                    </p>
+    
+                    <p>
+                        <span id="lbl_cus2" class="label">ADS SERVICES </span>
+                        will be responsible for the content packed inside the shipment.
+                    </p>
+                    <p>
+                        <span id="lbl_cus3" class="label">ADS SERVICES </span>
+                        will ensure the availability with the required COD amount for hassle free delivery.
+                    </p>
+                </div>
+                <p>
+                    Booked weight may vary with invoice / billing weight as our manifested weight will
+                be treated as final weight.
+                </p>
+                <table border="1" cellpadding="0" cellspacing="0" style="width: 639px">
+                    <tbody><tr>
+                        <td class="style19" style="text-align: center">
+                            <b>Customer</b>
+                        </td>
+                        <td colspan="2" style="text-align: center" class="style20">M&amp;P Express Logistic's PICK-UP STAFF
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style11" rowspan="2">Name
+                        </td>
+                        <td class="style17">Name
+                        </td>
+                        <td class="style18"></td>
+                    </tr>
+                    <tr>
+                        <td class="style17">Courier
+                        </td>
+                        <td class="style18"></td>
+                    </tr>
+                    <tr>
+                        <td class="style11" rowspan="2">Sign and Stamp
+                        </td>
+                        <td class="style17">Signature
+                        </td>
+                        <td class="style18"></td>
+                    </tr>
+                    <tr>
+                        <td class="style17">Date &amp; Time
+                        </td>
+                        <td class="style18"></td>
+                    </tr>
+                </tbody></table>
+            </div>
+</form>-->
+{% endblock %}

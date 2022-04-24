@@ -1,0 +1,42 @@
+#header {
+    height: 50px;
+    background-color: #FFA500;
+    color: #fff;
+}
+#branding h1{
+    color: black;
+    text-decoration: black;
+    font-weight: bold;
+}
+#main{
+    padding-top: 20px;
+}
+a:link,
+a:visited{
+    color: black;
+}
+div.breadcrumbs{
+    background: black;
+}
+.module h2, .module caption, .inline-group h2{
+    background: #FFA500;
+}
+  
+.button, input[type=submit], input[type=button], .submit-row input, a.button{
+    background:  #FFA500;
+    color: #fff;
+}
+.button.default, input[type=submit].default, .submit-row input.default {
+  background:#FFA500;
+  color: #fff;
+}
+#content h1{
+   font-weight: bold;
+   text-transform: uppercase;
+}
+
+#content-related .module h2 {
+   color: black;
+   font-weight: bold;
+   text-transform: uppercase;
+}

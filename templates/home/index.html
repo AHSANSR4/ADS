@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}  | Home {% endblock %}
+<!--it show on browser title we added these tags in base.html inside title tag--> 
+
+{% block content %}
+{% if information_filled %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hello, {{user.username}}!</strong> You have submited your details wait until you are verified.
+      <hr class="my-2">
+      <p>A verification should be done within 3 days time period if it takes more then 3 days please contact support team    <a class="" href="#" role="button">Contact Help Support</a></p>
+      </div>
+{% endif %}
+ <!-- Showcase -->
+ <section id="showcase">
+    <div class="container text-center">
+        
+      <div class="home-search p-5">
+        <h1 class="dark-text">{{information_filled}}</h1>
+        <div class="overlay p-5"  style="background-color: #FFA500;">
+          
+          <h1 class="display-4 font-weight-bold mb-4">
+            ADS TRACKING
+          </h1>
+          <p class="lead">TRACK YOUR ORDER STATUS</p>
+          <div class="search">
+            <form action="search.html">
+              <!-- Form Row 1 -->
+              <div class="form-row">
+                <div class="col-md-3 mb-4"></div>
+                <div class="col-md-6 mb-4">
+                  <label class="sr-only">Keywords</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="ENTER YOUR TRACKING ID">
+                </div>
+              </div>
+              <button class="btn btn-dark  mt-1" type="submit">TRACK</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Showcase Ends -->
+  
+{% endblock %}

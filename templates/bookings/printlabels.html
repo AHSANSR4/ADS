@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style type="text/css" media="print">
+    @page {
+        margin-top: 4mm;
+        margin-bottom: 4mm;
+    }
+
+    body {
+        padding-top: 10px;
+        padding-bottom: 72px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    td {
+        text-align: left;
+        padding-left: 10px;
+        border-color: Black;
+    }
+
+    .alignment {
+        text-align: left;
+    }
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    td {
+        text-align: left;
+        padding-left: 10px;
+        border-color: Black;
+    }
+
+    .alignment {
+        text-align: left;
+    }
+</style>
+<!---START OF PRINT LABELS-->
+<!---here i'm getting values from bookings/views.py def printlabels -->
+
+{% if PSV %}<!-- PSV named context i passed it from printaddresslabels(if printselected) -->
+    <h5 class="text-left">Total Address labels selected to print : {{tsv}}</h5>
+    {% for i in PSV %}
+     <section class="pt-2 "><!--inside this section i will print all the addresslabels that are passed in our context named PSV-->
+        <body data-new-gr-c-s-check-loaded="14.1040.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+            <table style="border: 1px;" border="1" cellpadding="0" cellspacing="0" width="800px" height="450px" style="border: 1px solid black;table-layout: fixed;font-size:10px;">
+            <tbody><tr>
+                <td width="101px" style="padding:0px;"></td>
+                <td width="101px" style="padding:0px;"></td>
+                <td width="32px" style="padding:0px;"></td>
+                <td width="101px" style="padding:0px;"></td>
+                <td width="170px" style="padding:0px;"></td>
+                <td width="202px" style="padding:0px;"></td>
+            </tr>
+                <tr>
+                    <td colspan="2" rowspan="2" style="padding:5px; text-align:center;">
+                        <img src="{% static 'LOGO/ADSlogo.png' %}" alt="logo" width="100" height="100">
+                    </td>
+                    <td colspan="3" rowspan="2" style="text-align:center; padding-left: 5px;padding-right:5px;font-size:12px;">
+                        <span class="notranslate"><p style="font-family:IDAutomationHC39M">*{{i.TrackingID}}*</p></span>
+                    </td>
+                    <td style="text-align:center;" height="10px">COD Amount</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center; font-size:20px;font-weight:bold;">
+                        PKR {{i.CODAmount}}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" rowspan="3" style="padding:5px; text-align:center;">
+                    <img src="{% static 'LOGO/ADSlogo.png' %}" alt="QR CODE " width="100" height="100">
+                    </td>
+                    <td rowspan="2" style="text-align: justify;">
+                        <h3 style="font-size:20px; writing-mode: vertical-rl;text-align: center;margin: 0;transform: rotate(180deg);">Consignee</h3>
+                    </td>
+            
+                    <td style="font-size:14px; font-weight:bold;padding: 5px;" colspan="2">
+                        {{i.ConsigneeName}}
+                    </td>
+                    <td style="font-size:20px; font-weight:bold;text-align:center;;padding: 5px;">
+                        {{i.ConsigneeMobileNumber}} 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px;font-weight:bold; padding-right: 5px;height:30px;" colspan="3" align="center">
+                        {{i.ConsigneeAddress}}</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" align="center font-size:5px;">
+                        <h3 style=" font-size:20px; writing-mode: vertical-rl;text-align: center;margin: 0;transform: rotate(180deg);">Shipper</h3>
+                    </td>
+            
+                    <td colspan="2" style="font-weight:bold;" align="center">
+                        {{i.ConsignorName}}
+                    </td>
+                    <td style="font-weight:bold;" align="center">
+                      ADS Services -KHI
+                    </td>
+                </tr>
+                <tr>
+                <td colspan="2" style="font-size:16px; text-align:center; font-weight:bold;">KHI to KHI</td>
+                    <td>Pickup Address</td>
+                    <td colspan="2" align="center" style="height:30px; padding-left: 5px; padding-right: 5px;">
+                       {{i.ConsignorAddress}}
+                    </td>
+                </tr>
+                
+                <tr>
+                <td colspan="2" style="font-size:15px;text-align:center;font-weight:bold;padding-top:0px;padding-bottom:0px;">OVERNIGHT</td>
+                    <td>Return Address</td>
+                    <td colspan="2" align="center" style="height:30px; padding-left: 5px; padding-right: 5px;">
+                        {{i.ConsignorAddress}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Return Branch:</td>
+                    <td style="font-size:8px;text-align:center;font-weight:bold;padding-top:0px;padding-bottom:0px;">KHI</td>
+                    <td colspan="4" style="font-size:10px;" rowspan="3"><b>Product Details: </b>{{i.ProductDetail}} </td></tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Order Ref. No.:</td>
+                    <td style="font-size:8px;text-align:center;font-weight:bold;padding-top:0px;padding-bottom:0px;">{{i.Order_id}}</td>
+                </tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Pieces:</td>
+                    <td style="font-size:8px;text-align:center;padding-top:0px;padding-bottom:0px;">{{i.Pieces}}</td>
+                </tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Weight:</td>
+                    <td style="font-size:8px;text-align:center;padding-top:0px;padding-bottom:0px;">{{i.Weight}}<small> (kg)</small></td>
+                    <td colspan="4" style="font-size:10px;" rowspan="3"><b>Shipper Remarks: </b><strong>{{i.Remarks}}</strong> </td></tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Insurance Value:</td>
+                    <td style="font-size:8px;text-align:center;padding-top:0px;padding-bottom:0px;">0</td>
+                </tr>
+                <tr>
+                    <td style="font-size:8px;padding-top:0px;padding-bottom:0px;">Printed On</td>
+                    <td style="font-size:8px;text-align:center;padding-top:0px;padding-bottom:0px;">29/11/2021 03:33:03</td>
+                </tr>
+                <tr><td style="font-size:9px; text-align:center;" colspan="6"><span class="notranslate">اگر پیکنگ برقرار نہیں ہے تو پارسل قبول نہ کریں۔ "سی۔او۔ڈی" رقم ادا کرنے سے پہلے پارسل نہیں کھولا جا سکتا۔ "ایم اینڈ پی" پروڈکٹ کے لۓ ذمہ دار نہیں ہے، کسی بھی مسئلے کی صورت میں آن لائن شاپ یا بھیجنے والے سے رابطہ کریں۔</span></td></tr>
+            
+                  </tbody></table><br>
+     </section>
+    {% endfor %}
+{% else %}
+    <h1 class="text-center">NO ADDRESS LABEL IS SELECTED TO PRINT</h1>
+{% endif %}
+<!---END OF PRINT LABELS-->
+{% endblock %}

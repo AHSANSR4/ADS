@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>function toggle(source) {
+  checkboxes = document.getElementsByName('foo');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
+<!---START OF -->
+<!--SECTION NAV BAR START-->
+<section id="register" class="bg-light py-2 pt-2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"> ADDRESSES LABELS TO PRINT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search"  name="search" placeholder="Search by order id" aria-label="Search">
+        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search </button>&nbsp;
+       
+   <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalCenter">
+  Filter by Date
+</button>
+    </div>
+    <span class="text-center text-capitalize text-white">This page shows all the Address Labels that are yet to be Printed</span>
+  </nav>
+
+</form>
+<!--SECTION NAV BAR END-->
+</section>
+
+<!--TABLE START-->
+<section>
+  <form>
+ <button class="btn btn-outline-warning my-2  my-sm-0" name="printselected"  type="submit"><t class="text-dark">Print</t> </button>&nbsp;
+  <div class="table-responsive">
+    <caption>TO BE PRINTED</caption>
+    <table class="table caption-top">
+    <thead>
+        <tr>
+          <th scope="col"><input id="myCheck" onclick="toggle(this);" type="checkbox"  /><small> Select All</small></th>
+          <!--using onclick js function i'm calling two functions that i created above one is for selecting all and for is for displaying button-->
+          <!---If in future this DOM do any issue read these 
+            https://stackoverflow.com/questions/3910736/how-to-call-multiple-javascript-functions-in-onclick-event
+            https://en.wikipedia.org/wiki/Unobtrusive_JavaScript -->
+          <th scope="col">#</th>
+          <th scope="col">ConsigneeName</th>
+          <th scope="col">ConsigneeAddress</th>
+          <th scope="col">Tracking ID</th>
+          <th scope="col">Booking Date</th>
+          <th scope="col">PRINT STATUS</th>
+          <th scope="col">PRINT</th>
+        </tr>
+      </thead>
+      {% for i in PAL %}
+      <tbody>
+        <tr>
+          <td><input type="checkbox" value="{{i.id}}" id="myChecktwo"  onclick="myFunctiontwo();" name="foo"></td>
+          <th scope="row"><a href="{% url 'bookingreceipt' i.id %}">{{ i.id }}</a></th>
+          <td>{{i.ConsigneeName}}</td>
+          <td>{{i.ConsigneeAddress}}</td>
+          <td>{{i.TrackingID}}</td>
+          <td>{{i.BookingDate_date}}</td>
+          {% if i.AddressLabel_Printed == True %}
+               <td><small class="fa fa-check text-success"> printed</small></td>
+          {% else %}
+               <td><small class="fa fa-times"></small></td>
+          {% endif %}    
+           <td><a href="{% url 'printlabel' i.id %}">print <span class="fa fa-print"></span></a></td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+  </form>
+</section>
+
+<form action="{% url 'printaddresslabels' %}"> 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Filter Address Labels by Date</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        From:<input type="date" name="fromdate">
+        To:<input type="date" name="todate"> 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--TABLE END-->
+<!--- END OF --->
+{% endblock %}
